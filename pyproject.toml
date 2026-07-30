@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "RESPECT-upgrade-dossier"
+version = "0.1.0"
+description = "Git-governed requirements and acceptance tooling for RESPECT upgrades"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+authors = [{name = "Jim Plamondon"}]
+dependencies = [
+  "importlib-resources>=6.1",
+  "jsonschema>=4.25.1",
+]
+
+[project.optional-dependencies]
+test = [
+  "build>=1.2",
+  "pytest>=8.4",
+]
+
+[project.scripts]
+respect-upgrade-dossier = "respect_upgrade_dossier.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+respect_upgrade_dossier = [
+  "data/matrix/*.json",
+  "data/provenance/*.json",
+  "data/schemas/*.json",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+pythonpath = ["src"]
+testpaths = ["tests"]

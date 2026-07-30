@@ -1,0 +1,20 @@
+{
+  "baseline": {
+    "command": "python -m pytest -q tests/requirements",
+    "duration_seconds": 1,
+    "output_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "result": "fail"
+  },
+  "candidate": {
+    "command": "python -m pytest -q tests/requirements",
+    "duration_seconds": 1,
+    "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "result": "pass"
+  },
+  "mutation": {
+    "command": "python -m pytest -q tests/requirements",
+    "duration_seconds": 1,
+    "output_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "result": "fail"
+  }
+}

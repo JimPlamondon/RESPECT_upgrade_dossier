@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jims.example/schemas/respect_upgrade_dossier/upgrade_matrix.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_type",
+    "format_version",
+    "matrix_id",
+    "authority",
+    "source_import",
+    "requirements",
+    "semantic_hash"
+  ],
+  "properties": {
+    "artifact_type": {
+      "const": "respect_upgrade_matrix"
+    },
+    "format_version": {
+      "const": "1.0.0"
+    },
+    "matrix_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "const": "this_matrix_under_git"
+    },
+    "source_import": {
+      "type": "object",
+      "required": [
+        "source_repository",
+        "source_commit",
+        "source_matrix_id",
+        "source_matrix_version",
+        "source_matrix_semantic_hash",
+        "snapshot_sha256",
+        "selection_rule",
+        "closure_counts",
+        "closure"
+      ]
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/requirement"
+      }
+    },
+    "semantic_hash": {
+      "$ref": "#/$defs/hash"
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "strings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "kind",
+        "state",
+        "source_feature_id",
+        "source_row_ids",
+        "statement",
+        "target_versions",
+        "dependencies",
+        "tests",
+        "evidence_contract",
+        "allowed_scope",
+        "non_goals",
+        "implementation_ready",
+        "decision"
+      ],
+      "properties": {
+        "requirement_id": {
+          "type": "string",
+          "pattern": "^UPG-[A-Z0-9-]+$"
+        },
+        "kind": {
+          "enum": [
+            "upgrade_requirement",
+            "compatibility_constraint",
+            "imported_baseline"
+          ]
+        },
+        "state": {
+          "enum": [
+            "imported",
+            "proposed",
+            "accepted",
+            "in_implementation",
+            "candidate_ready",
+            "independently_verified",
+            "closed",
+            "superseded",
+            "rejected"
+          ]
+        },
+        "source_feature_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_row_ids": {
+          "$ref": "#/$defs/strings"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_versions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "first",
+            "last"
+          ],
+          "properties": {
+            "first": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "last": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "dependencies": {
+          "$ref": "#/$defs/strings"
+        },
+        "tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "test_id",
+              "polarity",
+              "path",
+              "sha256",
+              "timeout_seconds",
+              "ci_profile",
+              "candidate_command"
+            ]
+          }
+        },
+        "evidence_contract": {
+          "type": "object"
+        },
+        "allowed_scope": {
+          "$ref": "#/$defs/strings"
+        },
+        "non_goals": {
+          "$ref": "#/$defs/strings"
+        },
+        "implementation_ready": {
+          "type": "boolean"
+        },
+        "decision": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "artifact_type": "respect_upgrade_import_manifest",
+  "closure_counts": {
+    "bindings": 4,
+    "features": 21,
+    "interface_families": 23,
+    "profiles": 3,
+    "rows": 20,
+    "semantic_contracts": 12,
+    "source_locks": 16
+  },
+  "closure_sha256": "68fdc2da30cb0044d539cb3f54b094a15f0c3145b375544fd1b368fe1b7d070c",
+  "extraction_commit": "b32dac9290842d6cbe63f911c415e5357ed71d2b",
+  "extraction_method": "git subtree split --prefix=src/respect_upgrade_dossier",
+  "format_version": "1.0.0",
+  "matrix_semantic_hash": "d141dafbe659ac644b9a335f3adcc4ab76e3b2954c17c11e0409d3a82b94e5f9",
+  "requirements_imported": 21,
+  "requirements_state": {
+    "accepted": 0,
+    "proposed": 21
+  },
+  "snapshot_sha256": "0e14f0d3ef8c0246c7693c69e76a8c373ba7d24ef33eb4d4b72041dc91c776fc",
+  "source_commit": "3417dd40e69039a5dfb26d18aec6e823b18f8b19",
+  "source_matrix_semantic_hash": "af083beaf4991d333795fc6a6827421997fe2a32e7cc544d764e9ae2b3358f94"
+}
